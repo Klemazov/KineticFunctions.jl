@@ -2,5 +2,5 @@ using KineticFunctions
 using Test
 
 @testset "KineticFunctions.jl" begin
-    # Write your tests here.
+    @test fn(0.5,1.0) == 0.5
 end

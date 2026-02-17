@@ -1,5 +1,6 @@
 module KineticFunctions
 
-# Write your package code here.
+include("functions.jl")
 
+export fn
 end
