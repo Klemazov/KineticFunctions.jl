@@ -1,9 +1,13 @@
 name = "KineticFunctions"
 uuid = "0959bc0b-f8f2-4669-b395-4ee1cbbde4f4"
-authors = ["Kirill Klemazov"]
 version = "1.0.0-DEV"
+authors = ["Kirill Klemazov"]
+
+[deps]
+StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
 
 [compat]
+StaticArrays = "1.9.16"
 julia = "1.10.10"
 
 [extras]
