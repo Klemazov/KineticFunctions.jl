@@ -13,7 +13,7 @@ T = T(t)
     T(t,pp) if polynomial interpolation 
 =#
 
-K(A,Ea,T) = A*exp(-Ea/(R*T))
+K(T,A,Ea) = A*exp(-Ea/(R*T))
 
 abstract type RateConstantModel end
 
@@ -26,5 +26,5 @@ struct KModel{T}<:RateConstantModel
     end
 end
 function (kmodel::KModel)(temperature)
-    K(kmodel.params...,temperature)
+    K(temperature,kmodel.params...)
 end
