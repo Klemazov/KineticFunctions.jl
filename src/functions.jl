@@ -16,7 +16,7 @@ struct FNModel{T}<:FunctionModel
     end
 end
 function (fmodel::FNModel)(α)
-    fn(α,fmodel.params)
+    fn(α,fmodel.params...)
 end
 
 
