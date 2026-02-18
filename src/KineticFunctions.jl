@@ -5,6 +5,8 @@ module KineticFunctions
 include("functions.jl")
 include("rateconstant.jl")
 include("temperaturemodels.jl")
+include("KineticLinearRegressionTools.jl")
+include("DataParser.jl")
 const R = 8.31;
 export 
     R,
@@ -12,5 +14,6 @@ export
     FNModel,PNModel,AFModel,PTModel,KSModel,SBModel,
     K,
     KModel,
-    LinearHeating
+    LinearHeating,
+    TGParser, TGDataFrame
 end
