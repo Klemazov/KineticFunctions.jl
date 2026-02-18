@@ -1,7 +1,8 @@
 module DataParser
     using CSV,DataFrames
-
-	
+export 
+	TGParser,
+	TGDataFrame
 
 struct TGParser
 	time
@@ -33,7 +34,6 @@ mutable struct TGDataFrame
 		new(time, temperature, mass, α, dαdt)
 	end
 end
-export 
-	TGParser, TGDataFrame
+
 end
 

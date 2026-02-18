@@ -1,7 +1,5 @@
 module KineticFunctions
     using StaticArrays
-    #using Revise
-
 include("functions.jl")
 include("rateconstant.jl")
 include("temperaturemodels.jl")
