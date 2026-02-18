@@ -2,16 +2,16 @@ abstract type LinRegressEquation end
 
 
 #=
-y = ln(dαdt/f(α)) = lnA-Ea/R 1/T
+Y= AX+B
+ln(dαdt/f(α)) = lnA-Ea/R 1/T
 =#
-struct Equation{T, F}<:LinRegressEquation
-    dαdt::T
+struct KineticLinearRegressionProblem{F}<:LinRegressEquation
     f::F
-    oneT::T
-    y::T
-    function Equation(f,α,dαdt,temperature)
-        oneT = one(temperature)/temperature
-        y = log(dαdt/f(α))
-        new(f,α,dαdt,oneT, y)
-    end
 end
+function (x::KineticLinearRegressionProblem)(α,dαdt,temperature)
+    oneT = one(temperature)/temperature
+    y = log(dαdt/f(α))
+    return (oneT, y)
+end
+
+
