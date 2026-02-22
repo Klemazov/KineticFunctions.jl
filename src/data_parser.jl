@@ -1,7 +1,6 @@
 
 using CSV, DataFrames
-
-struct TGParser
+mutable struct TGParser
     time
     temperature
     mass
@@ -24,9 +23,9 @@ mutable struct TGDataFrame
         mass = tgparser.mass
 
         α = @. abs(mass[1] - mass) / (mass[1] - mass[end])
-        dαdt = diff(α)
+        dαdt = diff(α)./diff(time)
         push!(dαdt, dαdt[end])
-        dαdt[@. dαdt < 0.0] .= 0.000001
+        dαdt[@. dαdt < 0.0] .= 0.001
 
         new(time, temperature, mass, α, dαdt)
     end
@@ -36,5 +35,24 @@ function tgdftodf(x::TGDataFrame)
 	DataFrame(time=x.time, temperature = x.temperature, mass = x.mass, α = x.α, dαdt = x.dαdt)
 end
 
+
+tg_α(α) = @. abs(α[1]-α)/(α[1]-α[end])
+
+function calculate_dadt(α,t)
+     res = diff(α)./diff(t)
+     push!(res,res[end])
+end 
+
+function calculate_dadt(df::TGParser)
+    α =  df.mass
+    time = df.time
+    calculate_dadt(α,t)
+end
+
+
+function calculate_α(dαdt)
+    integral = cumsum(dαdt)
+    return integral/integral[end]
+end
 
 

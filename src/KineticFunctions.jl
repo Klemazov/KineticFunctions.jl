@@ -8,7 +8,7 @@ include("data_parser.jl")
 const R = 8.31;
 export 
     R,
-    TGParser, TGDataFrame, tgdftodf
+    TGParser, TGDataFrame, tgdftodf,
     fn, pn, af, pt, ks, sb,
     FNModel,PNModel,AFModel,PTModel,KSModel,SBModel,
     K,
