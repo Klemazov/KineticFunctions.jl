@@ -1,5 +1,3 @@
-using StaticArrays
-
 #=
 K(T) = Aexp(-Ea/RT)
 R - gas constant
